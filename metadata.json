@@ -1,0 +1,5 @@
+{
+  "name": "Dot - Talking Pet AI",
+  "description": "A real-time AI companion that keeps you company while you work, featuring a procedural dot-matrix face and natural voice capabilities.",
+  "requestFramePermissions": ["microphone"]
+}
