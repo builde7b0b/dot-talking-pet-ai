@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Voice chat overhauled to feel like talking to a human:
+  - Mic capture moved to an AudioWorklet with 32 ms chunks (was a deprecated
+    ScriptProcessor sending ~256 ms chunks), cutting round-trip latency.
+  - Echo cancellation, noise suppression, and auto gain enabled on the mic so
+    Dot no longer hears itself and hands-free barge-in works.
+  - Interrupting Dot now cuts playback instantly via source-level flush instead
+    of tearing down and rebuilding the whole AudioContext.
+  - Lip sync and speaking state now driven by actually-playing audio; while
+    listening, the face reacts to the user's mic level instead of a fake sine.
+  - System prompt rewritten for human turn-taking: short spoken turns, natural
+    backchannels, one question at a time, no lists or lectures.
+- Base64 encoding of mic audio no longer risks a stack overflow on large buffers.
+
 ## [0.1.0] - 2026-08-20
 
 ### Added
